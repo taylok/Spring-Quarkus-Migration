@@ -1,19 +1,33 @@
 package com.gck.demo.paymentgateway.accountbalance.models;
 
 import java.util.List;
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+// --- Commented out for Quarkus Migration
+// import org.bson.types.ObjectId;
+// --- Commented out for Quarkus Migration
+// import org.springframework.data.annotation.Id;
+// --- Commented out for Quarkus Migration
+// import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "balance")
-public class Balance{
+// --- Added for Quarkus Migration
+import io.quarkus.mongodb.panache.MongoEntity;
+import io.quarkus.mongodb.panache.PanacheMongoEntity;
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.bson.codecs.pojo.annotations.BsonId;
+import io.quarkus.mongodb.panache.PanacheQuery;
 
-    @Id
+// --- Commented out for Quarkus Migration
+// @Document(collection = "balance")
+@MongoEntity(collection="balance")
+public class Balance extends PanacheMongoEntity{
+
+    // --- Commented out for Quarkus Migration
+    // @Id
+    @BsonId
     private String _id;
     private String accountId;
     private double balance;
     private long lastUpdatedDate;
-    
+
     public Balance(){
 
     }
